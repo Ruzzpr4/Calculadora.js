@@ -6,8 +6,8 @@ const resultInput = document.getElementById("result");
 const allowedKeys = [
   "(",
   ")",
-  "/",
-  "*",
+  "÷",
+  "x",
   "-",
   "+",
   "9",
@@ -79,8 +79,13 @@ function calculate() {
   resultInput.value = "ERROR";
   resultInput.classList.add("error");
 
-  const result = eval(input.value); // esta função deve ser usada com muito cuidado pois ela executa o valor do input , podendo ate ser um codigo javascript malicioso
+  try {
+    const expression = input.value.replace(/÷/g, "/").replace(/x/g, "*");
+    const result = math.evaluate(expression); // Substitui eval por math.evaluate
 
-  resultInput.value = result;
-  resultInput.classList.remove("error");
+    resultInput.value = result;
+    resultInput.classList.remove("error");
+  } catch (error) {
+    console.error("Erro ao calcular:", error);
+  }
 }
