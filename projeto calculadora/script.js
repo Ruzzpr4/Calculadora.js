@@ -6,8 +6,8 @@ const resultInput = document.getElementById("result");
 const allowedKeys = [
   "(",
   ")",
-  "÷",
-  "x",
+  "/",
+  "*",
   "-",
   "+",
   "9",
